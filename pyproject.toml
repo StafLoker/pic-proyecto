@@ -1,0 +1,8 @@
+[project]
+name = "pic-proyecto"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "huggingface-hub>=2.4.0",
+    "ipykernel>=7.4.0",
+]
