@@ -82,7 +82,7 @@ Meta-PKLot-mini/
 ├── annotations.json   # COCO único con las 4 993 imágenes
 ├── images/            # 00001.jpg ... 04993.jpg (nombre = id COCO de la imagen)
 ├── assets/            # figuras de este README
-└── tools/             # librería de lectura (meta_pklot_mini.py) y adaptador de PyTorch
+└── tools/             # librería de lectura, adaptador de PyTorch y notebook que genera el dataset
 ```
 
 ### Formato de las anotaciones
@@ -232,7 +232,7 @@ Plazas recortadas por su `bbox`.
    - Las categorías pasan a 1-based (el 0 queda para el fondo, como esperan torchvision y Faster R-CNN) y los ids a secuenciales.
    - Se descartan `car_id`, `best_rotated_rect` y el id original de cada plaza.
 
-El notebook que genera el dataset es `PIC_Proyecto_Dataset_Mini.ipynb`, en la carpeta `notebooks` del repositorio del proyecto.
+El notebook que genera el dataset es `tools/PIC_Proyecto_Dataset_Mini.ipynb`.
 
 ## Uso
 
