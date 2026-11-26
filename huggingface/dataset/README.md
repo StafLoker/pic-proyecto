@@ -134,7 +134,6 @@ Cada imagen (`images`):
   "climate_id": 1,
   "condition_ids": [3],
   "original": {
-    "id": 21000000001,
     "file_name": "CNRPark-EXT/camera1/OVERCAST/2015-12-19/2015-12-19_09_18_00.jpg",
     "crop": [78, 158, 922, 592]
   }
@@ -147,7 +146,7 @@ Cada imagen (`images`):
 - `time_of_day_id`: `morning` de 6 a 10 h, `midday` de 11 a 15 h, `afternoon` de 16 a 19 h y `night` de 20 a 5 h. En ACPDS y ACMPS no hay hora: solo es `night` si la foto lleva esa etiqueta, y el resto es `null`.
 - `climate_id`: `null` si la foto de ACPDS o ACMPS no trae clima.
 - `condition_ids`: etiquetas de escena. Vacío en PKLot.
-- `original`: de dónde sale la imagen. `id` es el de MetaPKLot (`null` en ACPDS y ACMPS). `crop = [x, y, w, h]` es el recorte aplicado, en coordenadas de la imagen original, y es `null` en ACPDS, que no se recorta.
+- `original`: de dónde sale la imagen. `file_name` es la ruta de la foto en el dataset de origen. `crop = [x, y, w, h]` es el recorte aplicado, en coordenadas de la imagen original, y es `null` en ACPDS, que no se recorta.
 
 Cada anotación (`annotations`):
 
@@ -230,7 +229,7 @@ Plazas recortadas por su `bbox`.
    - El polígono se recorta al borde (Sutherland–Hodgman) y la plaza se marca `truncated = 1`. Si queda menos del 50 % de su área, se descarta.
    - `bbox` y `area` se recalculan desde el polígono, con float de 2 decimales.
    - Las categorías pasan a 1-based (el 0 queda para el fondo, como esperan torchvision y Faster R-CNN) y los ids a secuenciales.
-   - Se descartan `car_id`, `best_rotated_rect` y el id original de cada plaza.
+   - Se descartan `car_id`, `best_rotated_rect`, el id original de cada plaza y el id original de cada imagen (`original.file_name` ya la identifica).
 
 El notebook que genera el dataset es `tools/PIC_Proyecto_Dataset_Mini.ipynb`.
 

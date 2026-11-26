@@ -263,7 +263,6 @@ class Photo:
     hour: int | None
     conditions: tuple[str, ...]
     original_file: str  # path inside the source dataset
-    original_id: int | None  # MetaPKLot id; None for ACPDS and ACMPS
     # x, y, w, h cut from the original; None if uncropped
     crop: tuple[int, int, int, int] | None
     spots: tuple[Spot, ...]
@@ -366,7 +365,6 @@ class MetaPKLotMini:
                 hour=i['hour'],
                 conditions=tuple(conditions[c] for c in i['condition_ids']),
                 original_file=i['original']['file_name'],
-                original_id=i['original'].get('id'),
                 crop=tuple(i['original']['crop']
                            ) if i['original']['crop'] else None,
                 spots=tuple(spots.get(i['id'], ())),
