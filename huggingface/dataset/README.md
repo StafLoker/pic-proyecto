@@ -27,12 +27,12 @@ Subconjunto reducido y ampliado de [MetaPKLot](https://huggingface.co/datasets/D
 
 ## Origen
 
-| Dataset     | Qué aporta                                        | Licencia                | Fuente                                                                       |
-| ----------- | ------------------------------------------------- | ----------------------- | ---------------------------------------------------------------------------- |
-| PKLot       | 3 aparcamientos con cámara fija                   | CC BY 4.0               | [MetaPKLot](https://huggingface.co/datasets/DSBD-Research/MetaPKLot-Dataset) |
-| CNRPark-EXT | 9 cámaras en un mismo aparcamiento                | ODbL v1.0               | [MetaPKLot](https://huggingface.co/datasets/DSBD-Research/MetaPKLot-Dataset) |
-| ACPDS       | 293 fotos de un aparcamiento hechas con una GoPro | MIT                     | [Eighonet/parking-research](https://github.com/Eighonet/parking-research)    |
-| ACMPS       | 2 aparcamientos, fotos de 1280×800 y 1280×736     | No indicada (repo: MIT) | [Eighonet/parking-research](https://github.com/Eighonet/parking-research)    |
+| Dataset     | Qué aporta                                        | Licencia   | Fuente                                                                       |
+| ----------- | ------------------------------------------------- | ---------- | ---------------------------------------------------------------------------- |
+| PKLot       | 3 aparcamientos con cámara fija                   | CC BY 4.0  | [MetaPKLot](https://huggingface.co/datasets/DSBD-Research/MetaPKLot-Dataset) |
+| CNRPark-EXT | 9 cámaras en un mismo aparcamiento                | ODbL v1.0  | [MetaPKLot](https://huggingface.co/datasets/DSBD-Research/MetaPKLot-Dataset) |
+| ACPDS       | 293 fotos de un aparcamiento hechas con una GoPro | MIT        | [Eighonet/parking-research](https://github.com/Eighonet/parking-research)    |
+| ACMPS       | 2 aparcamientos, fotos de 1280×800 y 1280×736     | No se sabe | [Eighonet/parking-research](https://github.com/Eighonet/parking-research)    |
 
 [MetaPKLot](https://huggingface.co/datasets/DSBD-Research/MetaPKLot-Dataset) unifica y reanota PKLot, CNRPark-EXT y PLds. Aquí solo se usan las anotaciones de plazas (`original/spots`) de PKLot y CNRPark-EXT. ACPDS y ACMPS son las versiones procesadas del repositorio [Eighonet/parking-research](https://github.com/Eighonet/parking-research). Ese mismo repositorio aporta las etiquetas de escena de CNRPark-EXT (`Glare`, `Occlusion_car`, `Occlusion_tree` y `Fog`).
 
@@ -216,11 +216,7 @@ Plazas recortadas por su `bbox`.
    - PKLot: 300 de `pucpr`, 730 de `ufpr04` y 570 de `ufpr05` (1 600), porque `pucpr` tiene 195 plazas por imagen frente a unas 36 y 46.
    - ACPDS: las 293 fotos.
    - ACMPS: 650 de cada aparcamiento (1 300 de 13 101).
-3. **Muestreo estratificado.** En PKLot y CNRPark-EXT se toma, dentro de cada subset, la misma fracción de cada combinación de día, franja horaria y clima, con `random_state=99`. La muestra conserva la proporción de plazas ocupadas y el reparto por franja del original.
-
-   ![Muestra frente a original](assets/sample_vs_original.png)
-
-   ACMPS no tiene fecha ni hora. Se toman casi enteras las etiquetas de clima escasas, el resto son fotos sin etiqueta, y dentro de cada grupo se reparte la muestra entre los días de la marca de tiempo del zip, para no coger fotos casi iguales.
+3. **Muestreo estratificado.** En PKLot y CNRPark-EXT se toma, dentro de cada subset, la misma fracción de cada combinación de día, franja horaria y clima, con `random_state=99`. La muestra conserva la proporción de plazas ocupadas y el reparto por franja del original. ACMPS no tiene fecha ni hora. Se toman casi enteras las etiquetas de clima escasas, el resto son fotos sin etiqueta, y dentro de cada grupo se reparte la muestra entre los días de la marca de tiempo del zip, para no coger fotos casi iguales.
 4. **Etiquetas de escena.**
    - CNRPark-EXT: `Glare`, `Occlusion_car` y `Occlusion_tree` pasan a `condition_ids`, y `Fog` a `climate_id`. Las etiquetas se emparejan con las imágenes por el contenido del fichero (SHA-1), porque sus nombres se repiten entre cámaras. Se ignoran `Night` y las etiquetas de clima del zip.
    - ACPDS y ACMPS: clima y escena salen de sus ficheros de etiquetas. Las 4 fotos `Infrared` de ACMPS no se usan.
@@ -295,7 +291,7 @@ Meta-PKLot-mini mezcla recursos con condiciones distintas, por lo que usa `licen
 - **PKLot:** Creative Commons Attribution 4.0 International (CC BY 4.0).
 - **CNRPark-EXT:** Open Data Commons Open Database License (ODbL) v1.0.
 - **ACPDS:** MIT.
-- **ACMPS:** el repositorio de origen es MIT, pero no indica la licencia de los datos.
+- **ACMPS:** no se sabe la licencia de los datos.
 
 Consulta las condiciones de cada dataset original antes de reutilizar las imágenes. El `subset_id` de cada imagen indica a qué dataset pertenece y `datasets[].license_id`, su licencia.
 
