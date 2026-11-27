@@ -1,0 +1,2 @@
+modelo,test,umbral_overlap,accuracy,precision_empty,recall_empty,f1_empty,precision_occupied,recall_occupied,f1_occupied
+yolo11m,test.txt,0.3,0.8336596653613385,0.9709700259617654,0.7020477815699658,0.814895513518867,0.7505357908272611,0.9771205357142857,0.8489696969696969
