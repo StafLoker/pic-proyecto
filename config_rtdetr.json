@@ -1,0 +1,32 @@
+{
+  "seed": 99,
+  "dataset": {
+    "repo": "StafLoker/Meta-PKLot-mini",
+    "path": "/content/data/Meta-PKLot-mini",
+    "revision": null
+  },
+  "test_url": "https://raw.githubusercontent.com/StafLoker/pic-proyecto/main/data_split/test.txt",
+  "test_interno": {
+    "test_size": 0.2
+  },
+  "model": {
+    "repo": "GaryFer/smart-parking-weights",
+    "file": "rtdetr/run_123/weights/best.pt",
+    "names_map": {
+      "libre": 1,
+      "ocupado": 2
+    }
+  },
+  "inference": {
+    "score_thresh": 0.05,
+    "detections_per_img": 300,
+    "imgsz": 640
+  },
+  "spot_eval": {
+    "iou_thr": 0.5,
+    "score_thr": 0.5
+  },
+  "dataset_sha": "8f6a6c075e106cc0c5c57581ef3d460b129df893",
+  "acpds_fotos": 293,
+  "test_interno_fotos": 729
+}
